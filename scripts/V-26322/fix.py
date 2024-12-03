@@ -4,7 +4,7 @@
 # Description: No description provided
 import os
 
-APACHE_CONFIG_PATH = os.getenv('APACHE_CONFIG_PATH', '/etc/httpd/conf/httpd.conf')
+APACHE_CONFIG_PATH = os.getenv('APACHE_CONFIG_PATH', '/etc/apache2/httpd.conf')
 
 def fix():
     """Adds or corrects the directive The in the Apache config file."""
