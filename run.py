@@ -3,6 +3,7 @@ import subprocess
 
 from openpyxl import Workbook
 
+from tqdm import tqdm
 
 def run_checks_and_fixes():
     # Base directory where the checks and fixes are located
@@ -15,20 +16,16 @@ def run_checks_and_fixes():
     ws.append(["id", "status", "fix run status"])
 
     # Iterate through all subdirectories in the base directory
-    for subdir in os.listdir(base_directory):
+    for subdir in tqdm(os.listdir(base_directory), desc="Checking and fixing...", colour="blue", unit="script"):
         check_path = os.path.join(base_directory, subdir, "check.py")
         fix_path = os.path.join(base_directory, subdir, "fix.py")
-        # print(f"Checking {subdir}...")
-        # Run the check script
         if os.path.exists(check_path):
             check_result = subprocess.run(["python3", check_path], capture_output=True, text=True)
-            print(check_result.stdout)
             if "Check passed: True" in check_result.stdout:
                 ws.append([subdir, "pass", None])
             else:
-                # If check fails, run the fix script
                 if os.path.exists(fix_path):
-                    fix_result = subprocess.run(["python3", fix_path], capture_output=True, text=True)
+                    subprocess.run(["python3", fix_path], capture_output=True, text=True)
                     ws.append([subdir, "fail", "ran"])
                 else:
                     ws.append([subdir, "fail", "fix script missing"])
