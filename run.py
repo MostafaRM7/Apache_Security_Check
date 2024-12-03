@@ -18,10 +18,11 @@ def run_checks_and_fixes():
     for subdir in os.listdir(base_directory):
         check_path = os.path.join(base_directory, subdir, "check.py")
         fix_path = os.path.join(base_directory, subdir, "fix.py")
-        print(f"Checking {subdir}...")
+        # print(f"Checking {subdir}...")
         # Run the check script
         if os.path.exists(check_path):
             check_result = subprocess.run(["python3", check_path], capture_output=True, text=True)
+            print(check_result.stdout)
             if "Check passed: True" in check_result.stdout:
                 ws.append([subdir, "pass", None])
             else:
