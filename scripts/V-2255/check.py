@@ -5,7 +5,7 @@
 import os
 import re
 
-APACHE_CONFIG_PATH = os.getenv('APACHE_CONFIG_PATH', '/etc/httpd/conf/httpd.conf')
+APACHE_CONFIG_PATH = os.getenv('APACHE_CONFIG_PATH', '/etc/apache2/httpd.conf')
 
 def check():
     """Checks if the directive The is set correctly."""
