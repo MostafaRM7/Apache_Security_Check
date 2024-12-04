@@ -2,8 +2,8 @@ import os
 import subprocess
 
 from openpyxl import Workbook
-
 from tqdm import tqdm
+
 
 def run_checks_and_fixes():
     # Base directory where the checks and fixes are located

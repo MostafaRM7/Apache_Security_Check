@@ -9,11 +9,7 @@ APACHE_CONFIG_PATH = os.getenv('APACHE_CONFIG_PATH', '/etc/apache2/httpd.conf')
 def fix():
     """Adds or corrects the directive Edit in the Apache config file."""
     try:
-        fix_content = "\n# Added by fix script for V-26323\nEdit the httpd.conf file and set the root directory directive as follows:
-
-Directory
-Order deny,allow
-Deny from all\n"
+        fix_content = "\n# Added by fix script for V-26323\nEdit the httpd.conf file and set the root directory directive as follows:DirectorOrder deny,alloDeny from all\n"
         with open(APACHE_CONFIG_PATH, 'a') as config_file:
             config_file.write(fix_content)
             print(f"Configuration for V-26323 added successfully.")

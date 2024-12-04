@@ -9,7 +9,7 @@ APACHE_CONFIG_PATH = os.getenv('APACHE_CONFIG_PATH', '/etc/apache2/httpd.conf')
 def fix():
     """Adds or corrects the directive Edit in the Apache config file."""
     try:
-        fix_content = "\n# Added by fix script for V-13725\nEdit the httpd.conf file and set the value of "KeepAlive" to "On"\n"
+        fix_content = '\n# Added by fix script for V-13725\nEdit the httpd.conf file and set the value of "KeepAlive" to "On"\n'
         with open(APACHE_CONFIG_PATH, 'a') as config_file:
             config_file.write(fix_content)
             print(f"Configuration for V-13725 added successfully.")

@@ -9,11 +9,7 @@ APACHE_CONFIG_PATH = os.getenv('APACHE_CONFIG_PATH', '/etc/apache2/httpd.conf')
 def fix():
     """Adds or corrects the directive Edit in the Apache config file."""
     try:
-        fix_content = "\n# Added by fix script for V-26287\nEdit the httpd.conf file and remove the following modules:
-
-dav_module
-dav_fs_module
-dav_lock_module\n"
+        fix_content = "\n# Added by fix script for V-26287\nEdit the httpd.conf file and remove the following modulesdav_moduledav_fs_moduledav_lock_module\n"
         with open(APACHE_CONFIG_PATH, 'a') as config_file:
             config_file.write(fix_content)
             print(f"Configuration for V-26287 added successfully.")

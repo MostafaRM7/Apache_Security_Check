@@ -1,10 +1,10 @@
-
 # fix.py
 # This script provides fixes for ID: V-13672
 # Description: No description provided
 import os
 
 APACHE_CONFIG_PATH = os.getenv('APACHE_CONFIG_PATH', '/etc/apache2/httpd.conf')
+
 
 def fix():
     """Adds or corrects the directive Configure in the Apache config file."""
@@ -17,6 +17,7 @@ def fix():
         print(f"Error: Apache config file not found at {APACHE_CONFIG_PATH}")
     except Exception as e:
         print(f"An error occurred: {e}")
+
 
 if __name__ == "__main__":
     fix()
