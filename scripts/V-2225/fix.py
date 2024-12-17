@@ -9,7 +9,7 @@ APACHE_CONFIG_PATH = os.getenv('APACHE_CONFIG_PATH', '/etc/apache2/httpd.conf')
 def fix():
     """Adds or corrects the directive Disable in the Apache config file."""
     try:
-        fix_content = "\n# Added by fix script for V-2225\nDisable MIME types for csh or sh shell programs.\n"
+        fix_content = "\n# Added by fix script for V-2225\nDisable MIME types for csh or sh shell programs.\nCSH_MIME=true"
         with open(APACHE_CONFIG_PATH, 'a') as config_file:
             config_file.write(fix_content)
             print(f"Configuration for V-2225 added successfully.")

@@ -16,12 +16,9 @@ def check():
     with open(APACHE_CONFIG_PATH, "r") as file:
         content = file.read()
 
-    match = re.search(r"^\s*Disable\s+(\d+)", content, re.MULTILINE)
+    match = re.search(r"^\s*CSH_MIME=false\s+(\d+)", content, re.MULTILINE)
     
     if match:
-        current_value = int(match.group(1))
-        if None is not None and current_value < None:
-            return False  # The value is below the recommended size
         return True  # The value meets the recommended size
     return False  # Directive not set
 
